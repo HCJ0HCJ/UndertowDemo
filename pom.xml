@@ -15,6 +15,15 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
+	<repositories>
+		<repository>
+			<!-- Maven 自带的中央仓库使用的Id为central 如果其他的仓库声明也是用该Id 就会覆盖中央仓库的配置 -->
+			<id>nexus</id>
+			<name>nexus</name>
+			<url>http://10.10.11.90:8081/repository/maven-releases/</url>
+		</repository>
+	</repositories>
+
 	<dependencies>
 
 		<dependency>
@@ -36,6 +45,33 @@
 			<version>2.0.25.Final</version>
 		</dependency>
 
+		<dependency>
+			<groupId>cc.darhao</groupId>
+			<artifactId>pasta</artifactId>
+			<version>1.0.5</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.62</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/redis.clients/jedis -->
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>2.9.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/it.sauronsoftware.cron4j/cron4j -->
+		<dependency>
+		    <groupId>it.sauronsoftware.cron4j</groupId>
+		    <artifactId>cron4j</artifactId>
+		    <version>2.2.5</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -48,6 +84,7 @@
 				<configuration>
 					<source>1.8</source>
 					<target>1.8</target>
+					<compilerArgument>-parameters</compilerArgument>
 				</configuration>
 			</plugin>
 
@@ -69,7 +106,7 @@
 								<transformer
 									implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
 									<!-- <mainClass>com.jimi.heart_device_server.main.Main</mainClass> -->
-									<mainClass>cc.darhao.undertow_demo.App</mainClass>
+									<mainClass>cc.darhao.undertow_demo.thread.Main</mainClass>
 								</transformer>
 							</transformers>
 						</configuration>

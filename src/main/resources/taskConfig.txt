@@ -1,0 +1,6 @@
+cron4j=task_save_data
+
+task_save_data.cron=* * * * *
+task_save_data.class=cc.darhao.undertow_demo.thread.MessageSaver
+task_save_data.daemon=true
+task_save_data.enable=true
